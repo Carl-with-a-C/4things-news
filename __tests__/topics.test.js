@@ -17,6 +17,14 @@ afterAll(() => {
 
 describe("GET /api/topics", () => {
   //should serve an array of all topics
+  it("should respond with a json object containing a key of topics with a value of an array of all the topics objects", () => {
+    return request(app)
+      .get("/api/topics")
+      .expect(200)
+      .then((res) => {
+        expect(res.body.topics.length).toEqual(3);
+      });
+  });
 
   it("should return an array of all topics", () => {
     return request(app)
@@ -37,6 +45,15 @@ describe("GET /api/topics", () => {
             slug: "paper",
           },
         ]);
+      });
+  });
+
+  it("should ERROR - 404: Path not Found when incorrect path entered", () => {
+    return request(app)
+      .get("/api/nonsense")
+      .expect(404)
+      .then((res) => {
+        expect(res.body.msg).toBe("path not found!");
       });
   });
 });
