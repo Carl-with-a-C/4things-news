@@ -1,3 +1,7 @@
+const { fetchTopics } = require("../models/fetchTopics");
+
 exports.getTopics = (req, res) => {
-  console.log("control this");
+  fetchTopics().then((fetchedTopics) => {
+    res.send({ topics: fetchedTopics });
+  });
 };
