@@ -26,6 +26,30 @@ describe("GET /api/topics", () => {
       });
   });
 
+  it("should contain the keys of 'slug' and 'description' in each topic", () => {
+    return request(app)
+      .get("/api/topics")
+      .expect(200)
+      .then((res) => {
+        res.body.topics.forEach((topic) => {
+          expect(Object.keys(topic)).toEqual(["slug", "description"]);
+        });
+      });
+  });
+
+  it("the keys of 'slug' and 'description' should contain values the type of 'string'", () => {
+    return request(app)
+      .get("/api/topics")
+      .expect(200)
+      .then((res) => {
+        res.body.topics.forEach((topic) => {
+          expect(typeof topic["slug"] && typeof topic["description"]).toBe(
+            "string"
+          );
+        });
+      });
+  });
+
   it("should return an array of all topics", () => {
     return request(app)
       .get("/api/topics")
