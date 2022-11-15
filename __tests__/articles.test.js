@@ -37,6 +37,15 @@ describe("GET /api/articles", () => {
       });
   });
 
+  it("should be sorted by date in desc order", () => {
+    return request(app)
+      .get("/api/articles")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.articles).toBeSortedBy("created_at", { descending: true });
+      });
+  });
+
   it("should ERROR - 404: Path not Found when incorrect path entered", () => {
     return request(app)
       .get("/api/nonsense")
