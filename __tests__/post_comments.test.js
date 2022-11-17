@@ -23,11 +23,13 @@ describe("POST /api/articles/:article_id/comments", () => {
       })
       .expect(201)
       .then((res) => {
-        expect(res.body).toMatchObject({ comment: expect.any(String) });
-        console.log(res.body.comment);
-        expect(res.body.comment).toBe(
-          "Big boy Barry bonding it up like James doh"
-        );
+        expect(res.body.comment).toMatchObject({
+          comment_id: expect.any(Number),
+          votes: expect.any(Number),
+          author: expect.any(String),
+          article_id: expect.any(Number),
+          created_at: expect.any(String),
+        });
       });
   });
 
@@ -53,7 +55,7 @@ describe("POST /api/articles/:article_id/comments", () => {
       })
       .expect(400)
       .then(({ body }) => {
-        expect(body.msg).toBe("User does not exist!");
+        expect(body.msg).toBe("Bad Request!");
       });
   });
 

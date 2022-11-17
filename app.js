@@ -19,7 +19,7 @@ app.use((err, req, res, next) => {
     res.status(400).send({ msg: "bad request!" });
   } else {
     if (err.code === "23503") {
-      res.status(400).send({ msg: "User does not exist!" });
+      res.status(400).send({ msg: "Bad Request!" });
     } else {
       next(err);
     }
