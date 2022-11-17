@@ -49,7 +49,7 @@ describe("GET /api/articles/:article_id", () => {
       });
   });
 
-  it("should ERROR - 400: Bad Requestwhen incorrect path entered", () => {
+  it("should ERROR - 400: Bad Request when incorrect path entered", () => {
     return request(app)
       .get("/api/articles/Purp")
       .expect(400)
