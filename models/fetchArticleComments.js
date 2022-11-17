@@ -10,6 +10,4 @@ exports.fetchArticleComments = (article_id) => {
       return fetchedComments.rows;
     }
   });
-
-  // console.log("up in the model");
 };
