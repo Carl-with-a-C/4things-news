@@ -59,11 +59,23 @@ describe("POST /api/articles/:article_id/comments", () => {
       });
   });
 
-  it("should ERROR - 400: Bad Request when input criteria is not met", () => {
+  it("should ERROR - 400: Bad Request when no username is input", () => {
     return request(app)
       .post("/api/articles/1/comments")
       .send({
         body: "Big boy Barry bonding it up like James doh",
+      })
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Invalid input criteria!");
+      });
+  });
+
+  it("should ERROR - 400: Bad Request when no body is input", () => {
+    return request(app)
+      .post("/api/articles/1/comments")
+      .send({
+        username: "butter_bridge",
       })
       .expect(400)
       .then(({ body }) => {
