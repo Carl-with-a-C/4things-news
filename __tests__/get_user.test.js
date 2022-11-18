@@ -14,7 +14,6 @@ afterAll(() => {
 });
 
 describe("GET /api/users", () => {
-  //should serve an array of all articles
   it("should respond with a json object containing a key of users with a value of an array of all the users objects", () => {
     return request(app)
       .get("/api/users")
