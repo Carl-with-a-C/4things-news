@@ -61,4 +61,13 @@ describe("PATCH /api/articles/:article_id updates vote count on article", () => 
         expect(body.msg).toBe("Bad Request!");
       });
   });
+
+  it("should ERROR - 400: Bad Request when incorrect path entered", () => {
+    return request(app)
+      .get("/api/articles/Purp")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("bad request!");
+      });
+  });
 });
