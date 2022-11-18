@@ -1,6 +1,6 @@
 const seed = require("../db/seeds/seed");
 const db = require("../db/connection");
-const articleData = require("../db/data/test-data/index");
+const testData = require("../db/data/test-data/index");
 const request = require("supertest");
 const app = require("../app");
 const sorted = require("jest-sorted");
@@ -8,7 +8,7 @@ const sorted = require("jest-sorted");
 const { getArticles } = require("../controllers/getArticles");
 
 beforeEach(() => {
-  return seed(articleData);
+  return seed(testData);
 });
 
 afterAll(() => {

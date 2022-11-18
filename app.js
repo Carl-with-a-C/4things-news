@@ -4,6 +4,7 @@ const { getTopics } = require("./controllers/getTopics");
 const { getArticles } = require("./controllers/getArticles");
 const { getArticleById } = require("./controllers/getArticleById");
 const { getArticleComments } = require("./controllers/getArticleComments");
+const { getUsers } = require("./controllers/getUsers");
 const { postComment } = require("./controllers/postComment");
 const { updateArticle } = require("./controllers/updateArticle");
 
@@ -13,7 +14,10 @@ app.get("/api/topics", getTopics);
 app.get("/api/articles", getArticles);
 app.get("/api/articles/:article_id", getArticleById);
 app.get("/api/articles/:article_id/comments", getArticleComments);
+app.get("/api/users", getUsers);
+
 app.post("/api/articles/:article_id/comments", postComment);
+
 app.patch("/api/articles/:article_id", updateArticle);
 
 app.use((err, req, res, next) => {
