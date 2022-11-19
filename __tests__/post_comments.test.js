@@ -55,7 +55,7 @@ describe("POST /api/articles/:article_id/comments", () => {
       })
       .expect(400)
       .then(({ body }) => {
-        expect(body.msg).toBe("Bad Request!");
+        expect(body.msg).toBe("bad request!");
       });
   });
 
