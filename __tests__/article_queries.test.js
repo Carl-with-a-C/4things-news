@@ -123,7 +123,6 @@ describe("GET /api/articles", () => {
       .get("/api/articles/?topic=facial_hair")
       .expect(404)
       .then(({ body }) => {
-        console.log(body, "msg");
         expect(body.msg).toBe("No article found");
       });
   });
