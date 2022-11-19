@@ -58,7 +58,7 @@ describe("PATCH /api/articles/:article_id updates vote count on article", () => 
       .send({ include_votes: 10 })
       .expect(400)
       .then(({ body }) => {
-        expect(body.msg).toBe("Bad Request!");
+        expect(body.msg).toBe("bad request!");
       });
   });
 
