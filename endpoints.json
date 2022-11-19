@@ -23,5 +23,57 @@
         }
       ]
     }
+  },
+  "GET /api/users": {
+    "description": "serves an array of all users",
+    "queries": [],
+    "exampleResponse": {
+      "users": [
+        {
+          "username": "butter_bridge",
+          "name": "jonny",
+          "avatar_url": "https://www.healthytherapies.com/wp-content/uploads/2016/06/Lime3.jpg"
+        }
+      ]
+    }
+  },
+  "POST /api/articles": {
+    "description": "takes a request object with properties 'username' and 'body' posts body as a comment and responds with posted comment",
+    "queries": [],
+    "exampleResponse": {
+      "articles": [
+        {
+          "body": "The beautiful thing about treasure is that it exists. Got to find out what kind of sheets these are; not cotton, not rayon, silky."
+        }
+      ]
+    }
+  },
+
+  "PATCH /api/articles": {
+    "description": "takes a request object with key 'inc_votes' and value for new votes property. Updates votes on specified article and responds with updated comment",
+    "queries": [],
+    "exampleResponse": {
+      "articles": [
+        {
+          "title": "Seafood substitutions are increasing",
+          "topic": "cooking",
+          "author": "weegembump",
+          "body": "Text from the article..",
+          "created_at": 1527695953341,
+          "votes": 100
+        }
+      ]
+    }
+  },
+  "DELETE /api/comments": {
+    "description": "deletes the given comment by comment id.",
+    "queries": [],
+    "exampleResponse": {
+      "articles": [
+        {
+          "204": "no content"
+        }
+      ]
+    }
   }
 }
