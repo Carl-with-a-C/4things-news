@@ -25,11 +25,9 @@ exports.fetchArticleQueries = (
   let queryValue = [];
 
   let queryStr = `SELECT articles.article_id, title, topic, articles.author, articles.created_at, articles.votes, COUNT(comments.article_id)::INT AS comment_count from articles LEFT JOIN comments ON comments.article_id = articles.article_id`;
-  console.log(order);
 
   if (typeof articleTopic === "string") {
     queryValue.push(articleTopic);
-    console.log(queryValue);
     queryStr += ` WHERE topic = $1`;
   }
 
@@ -41,11 +39,10 @@ exports.fetchArticleQueries = (
     queryStr += ` ORDER BY ${sort_by}`;
   }
   if (!["asc", "desc"].includes(order)) {
-    return Promise.reject({ status: 400, msg: "Invalid order query" });
+    return Promise.reject({ status: 400, msg: "Invalid order query!" });
   } else {
     queryStr += ` ${order}`;
   }
-  console.log(queryStr);
 
   return db.query(queryStr, queryValue).then((queriedArticles) => {
     return queriedArticles.rows;
