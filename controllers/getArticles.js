@@ -6,10 +6,13 @@ exports.getArticles = (req, res, next) => {
 
   fetchArticleQueries(topic, sort_by, order)
     .then((articles) => {
-      res.send({ articles });
+      if (articles.length === 0) {
+        res.status(404).send({ msg: "No article found" });
+      } else {
+        res.send({ articles });
+      }
     })
     .catch((err) => {
-      console.log(err);
       next(err);
     });
 };

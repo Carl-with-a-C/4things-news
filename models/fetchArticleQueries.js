@@ -41,7 +41,7 @@ exports.fetchArticleQueries = (
     queryStr += ` ORDER BY ${sort_by}`;
   }
   if (!["asc", "desc"].includes(order)) {
-    return Promise.reject({ status: 400, msg: "Invalid order query" });
+    return Promise.reject({ status: 400, msg: "Invalid order query!" });
   } else {
     queryStr += ` ${order}`;
   }

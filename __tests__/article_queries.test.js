@@ -90,4 +90,41 @@ describe("GET /api/articles", () => {
         expect(body.articles).toBeSortedBy("title", { descending: false });
       });
   });
+
+  it("should ERROR - 404: Path not Found when incorrect path entered", () => {
+    return request(app)
+      .get("/api/nonsense")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("path not found!");
+      });
+  });
+
+  it("should ERROR - 400: Invalid sort query! when incorrect sort_by condition entered", () => {
+    return request(app)
+      .get("/api/articles/?sort_by=moustache_size")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Invalid sort query!");
+      });
+  });
+
+  it("should ERROR - 400: Invalid order query! when incorrect order condition entered", () => {
+    return request(app)
+      .get("/api/articles/?order=whiskers")
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("Invalid order query!");
+      });
+  });
+
+  it("should 204: No articles found! when non-existent topic condition entered", () => {
+    return request(app)
+      .get("/api/articles/?topic=facial_hair")
+      .expect(404)
+      .then(({ body }) => {
+        console.log(body, "msg");
+        expect(body.msg).toBe("No article found");
+      });
+  });
 });
