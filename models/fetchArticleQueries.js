@@ -28,7 +28,6 @@ exports.fetchArticleQueries = (
 
   if (typeof articleTopic === "string") {
     queryValue.push(articleTopic);
-    console.log(queryValue);
     queryStr += ` WHERE topic = $1`;
   }
 
