@@ -6,7 +6,8 @@ exports.getApi = (req, res, next) => {
     if (err) {
       next(err);
     } else {
-      res.status(200).send({ endPoints: parsedEndpoints });
+      res.status(200).send({ endPoints: parsedEndpoints
+     });
     }
   });
 };
