@@ -11,6 +11,7 @@ const { updateArticle } = require("./controllers/updateArticle");
 const { removeComment } = require("./controllers/removeComment");
 const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/api/topics", getTopics);
