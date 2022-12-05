@@ -9,6 +9,7 @@ const { getApi } = require("./controllers/getApi");
 const { postComment } = require("./controllers/postComment");
 const { updateArticle } = require("./controllers/updateArticle");
 const { removeComment } = require("./controllers/removeComment");
+const cors = require("cors");
 
 app.use(express.json());
 
