@@ -239,6 +239,7 @@ describe("GET /api/articles", () => {
             author: expect.any(String),
             created_at: expect.any(String),
             votes: expect.any(Number),
+            body: expect.any(String),
             comment_count: expect.any(Number),
           });
         });

@@ -24,7 +24,7 @@ exports.fetchArticleQueries = (
   ];
   let queryValue = [];
 
-  let queryStr = `SELECT articles.article_id, title, topic, articles.author, articles.created_at, articles.votes, COUNT(comments.article_id)::INT AS comment_count from articles LEFT JOIN comments ON comments.article_id = articles.article_id`;
+  let queryStr = `SELECT articles.article_id, title, topic, articles.author, articles.created_at, articles.votes, articles.body, COUNT(comments.article_id)::INT AS comment_count from articles LEFT JOIN comments ON comments.article_id = articles.article_id`;
 
   if (typeof articleTopic === "string") {
     queryValue.push(articleTopic);
