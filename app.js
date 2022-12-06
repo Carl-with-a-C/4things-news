@@ -10,8 +10,11 @@ const { postComment } = require("./controllers/postComment");
 const { updateArticle } = require("./controllers/updateArticle");
 const { removeComment } = require("./controllers/removeComment");
 const cors = require("cors");
+const corsOptions = {
+  origin: "https://filthy-neckerchief-tuna.cyclic.app/api",
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/api/topics", getTopics);
