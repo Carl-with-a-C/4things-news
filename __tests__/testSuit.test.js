@@ -344,6 +344,7 @@ describe("POST /api/articles/:article_id/comments", () => {
           author: expect.any(String),
           article_id: expect.any(Number),
           created_at: expect.any(String),
+          body: expect.any(String),
         });
       });
   });
